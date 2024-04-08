@@ -1,4 +1,4 @@
 {
-    "rewrites": [{ "source": "./api/send-sms", "destination": "./api/send-sms.js" }]
+    "rewrites": [{ "source": "api/send-sms.js", "destination": "api/send-sms.js" }]
   }
   
