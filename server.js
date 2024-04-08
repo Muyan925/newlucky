@@ -1,14 +1,13 @@
+// const express = require('express');
 import express from 'express';
 import bodyParser from 'body-parser';
 import twilio from 'twilio';
+// const bodyParser = require('body-parser');
+// const twilio = require('twilio');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
 
-// 根据环境变量创建 Twilio 客户端
-const client = twilio(accountSid, authToken);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -21,6 +20,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// 替换为你自己的 Twilio 凭证
+const accountSid = 'AC509e4d11d06a3d7a5ddb6a449134018f';
+const authToken = 'b3e75b5fe992cbd2f6771c1117b4842a';
+const client = twilio(accountSid, authToken);
+
 // 根路由
 app.get('/', (req, res) => {
   res.send('你好世界！');
@@ -28,10 +32,17 @@ app.get('/', (req, res) => {
 
 // 发送短信路由
 app.post('/send-sms', (req, res) => {
+  // const { from, to, body } = req.body;
+  // console.log(phoneNumber, message);
+  // console.log('====',  req.body);
+  // res.send('success');
   // 使用 Twilio 客户端发送短信
   client.messages
     .create({
       ...req.body
+      // body: message,
+      // from: '+447700159578', // 请替换为你自己的 Twilio 电话号码
+      // to: phoneNumber
     })
     .then(message => {
       console.log('消息已发送:', message.sid);
