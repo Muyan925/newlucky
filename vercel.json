@@ -1,0 +1,6 @@
+{
+    "routes": [
+      { "src": "/send-sms", "dest": "http://localhost:3000/send-sms" }
+    ]
+  }
+  
