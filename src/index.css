@@ -123,7 +123,6 @@ body {
 
 .btn-group > * {
   flex: 1; /* 让按钮平均占据剩余空间 */
-  margin-right: 10px; /* 调整按钮之间的间距 */
 }
 
 .btn-group > *:last-child {
