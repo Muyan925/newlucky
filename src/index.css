@@ -368,13 +368,13 @@ body {
 }
 
 .webcam-capture img {
-  max-width: 300%;
+  max-width: 100%;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .webcam-video {
-  width: 200%; /* 使视频填充其容器的宽度 */
-  max-height: 600px; /* 限制视频的最大高度，避免过大 */
+  width: 100%; /* 使视频填充其容器的宽度 */
+  max-height: 400px; /* 限制视频的最大高度，避免过大 */
   border-radius: 5px;
 }
 /* ViewPhoto styles */
