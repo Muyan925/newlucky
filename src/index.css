@@ -362,15 +362,30 @@ body {
 }
 /* End checkbox styles */
 /* WebcamCapture styles */
-.webcam-capture {
-  text-align: center;
+.webcam-capture-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 
-.webcam-capture img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
+/* webcam preview image */
+.webcam-preview {
+  margin-bottom: 20px;
+  width: 110%;
+  max-width: 500px;
+  border-radius: 5px;
 }
+.webcam-video {
+  width: 110%; /* 使视频填充其容器的宽度 */
+  max-height: 500px; /* 限制视频的最大高度，避免过大 */
+  border-radius: 5px;
+}
+
 
 /* ViewPhoto styles */
 .photo-container {
