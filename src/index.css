@@ -112,16 +112,24 @@ body {
   background-color: #000;
   color: #fff;
 }
+.image-container {
+  margin-bottom: 20px; /* 调整图片容器与按钮组之间的间距 */
+}
+
 .btn-group {
   display: flex;
   justify-content: space-between;
 }
+
 .btn-group > * {
-  flex: 1 1 49%;
+  flex: 1; /* 让按钮平均占据剩余空间 */
+  margin-right: 10px; /* 调整按钮之间的间距 */
 }
-.btn-group > * + * {
-  margin-left: 0.8rem;
+
+.btn-group > *:last-child {
+  margin-right: 0; /* 最后一个按钮不设置右侧间距 */
 }
+
 .label-container{
 
   background-color: #f8f9fa; /* 表单容器背景颜色 */

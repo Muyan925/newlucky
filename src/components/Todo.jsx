@@ -249,8 +249,10 @@ const WebcamCapture = (props) => {
   return (
     <div className="webcam-capture-container">
       {errorMessage && <p>{errorMessage}</p>}
+      <div className="image-container">
       {!imgSrc && <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" className="webcam-video" />}
       {imgSrc && <img src={imgSrc} className="webcam-preview" alt="Webcam Preview"/>}
+      </div>
       <div className="btn-group">
         {!imgSrc && (
           <button type="button" className="btn" onClick={() => capture(props.id)}>
