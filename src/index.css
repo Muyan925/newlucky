@@ -371,6 +371,8 @@ body {
 /* WebcamCapture styles */
 .webcam-capture {
   text-align: center;
+  width: 85%; /* 设置宽度为父元素宽度的 80% */
+  margin: 0 auto; /* 居中 */
   
 }
 
@@ -383,6 +385,7 @@ body {
   width: 100%; /* 使视频填充其容器的宽度 */
   max-height: 400px; /* 限制视频的最大高度，避免过大 */
   border-radius: 5px;
+
 }
 /* ViewPhoto styles */
 .photo-container {
