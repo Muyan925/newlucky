@@ -270,7 +270,7 @@ const WebcamCapture = (props) => {
           </>
         )}
         <button type="button" className="btn" onClick={returnToHomePage}>
-          Return 
+          Back 
         </button>
       </div>
       </div>
