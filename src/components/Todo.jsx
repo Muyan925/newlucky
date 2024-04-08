@@ -3,7 +3,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Webcam from "react-webcam";
 import { addPhoto, deletePhoto, GetPhotoSrc } from "../db.jsx";
-import SendSMS from "../SendSMS.jsx";
+import SendSMS from "../../public/SendSMS.jsx";
 import GoogleMap from "../GoogleMap.jsx"; // Import GoogleMap component
 
 function usePrevious(value) {
