@@ -15,7 +15,7 @@ const SendSMS = ({ closePopup }) => {
   const sendSMS = () => {
    
     const accountSid = 'AC509e4d11d06a3d7a5ddb6a449134018f';
-    const authToken = '74961a3bdece9b0ec7cd8dbdcfb5cbf9';
+    const authToken = '900ca65fbbdecfef14b5b84245f489ec';
 
     
     const fromPhoneNumber = '+447700159578';
