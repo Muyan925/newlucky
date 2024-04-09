@@ -243,7 +243,7 @@ const WebcamCapture = (props) => {
   };
 
   const returnToHomePage = () => {
-    window.location.href = 'Lucky.html'; // Redirect to homepage
+    window.location.href = '/'; // Redirect to homepage
   };
 
   return (
@@ -294,7 +294,7 @@ const ViewPhoto = (props) => {
   };
 
   const returnToHomePage = () => {
-    window.location.href = 'Lucky.html'; // Redirect to homepage
+    window.location.href = '/'; // Redirect to homepage
   };
 
   useEffect(() => {
