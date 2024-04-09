@@ -260,7 +260,7 @@ const WebcamCapture = (props) => {
         {imgSrc && (
           <>
             <button type="button" className="btn" onClick={() => savePhoto(props.id, imgSrc)}>
-              Save Photo
+              Save 
             </button>
             <button type="button" className="btn todo-cancel" onClick={cancelPhoto}> {/* 修改取消按钮的点击事件 */}
               Cancel
@@ -268,7 +268,7 @@ const WebcamCapture = (props) => {
           </>
         )}
         <button type="button" className="btn" onClick={returnToHomePage}>
-          Return to Home
+         Back
         </button>
       </div>
     </>
