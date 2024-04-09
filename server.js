@@ -8,7 +8,6 @@ import twilio from 'twilio';
 const app = express();
 const port = process.env.PORT || 3000;
 
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -45,16 +44,16 @@ app.post('/send-sms', (req, res) => {
       // to: phoneNumber
     })
     .then(message => {
-      console.log('消息已发送:', message.sid);
-      res.send('短信发送成功！');
+      console.log('Message sent:', message.sid);
+      res.send('SMS sent successfully!');
     })
     .catch(error => {
-      console.error('发送消息错误:', error);
-      res.status(500).send('发送消息失败！');
+      console.error('Send message error:', error);
+      res.status(500).send('Failed to send message!');
     });
 });
 
 // 启动服务器
 app.listen(port, () => {
-  console.log(`服务器正在运行于端口 ${port}`);
+  console.log(`The server is running on port ${port}`);
 });
