@@ -1,59 +1,106 @@
-// const express = require('express');
-import express from 'express';
-import bodyParser from 'body-parser';
-import twilio from 'twilio';
-// const bodyParser = require('body-parser');
-// const twilio = require('twilio');
+import React, { useState } from 'react';
 
-const app = express();
-const port = process.env.PORT || 3000;
+const SendSMS = ({ closePopup }) => {
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [message, setMessage] = useState('');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+  const handlePhoneChange = (event) => {
+    setPhoneNumber(event.target.value);
+  };
 
-// 设置允许跨域请求的中间件
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // 允许所有域的请求
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization'); // 允许的请求头
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // 允许的HTTP方法
-  next();
-});
+  const handleMessageChange = (event) => {
+    setMessage(event.target.value);
+  };
 
-// 替换为你自己的 Twilio 凭证
-const accountSid = 'AC509e4d11d06a3d7a5ddb6a449134018f';
-const authToken = '700ca65fbbdecfef14b5b84245f489ed';
-const client = twilio(accountSid, authToken);
+  const sendSMS = () => {
+   
+    const accountSid = 'AC509e4d11d06a3d7a5ddb6a449134018f';
+    const authToken = '74961a3bdece9b0ec7cd8dbdcfb5cbf9';
 
-// 根路由
-app.get('/', (req, res) => {
-  res.send('你好世界！');
-});
+    
+    const fromPhoneNumber = '+447700159578';
 
-// 发送短信路由
-app.post('/send-sms', (req, res) => {
-  // const { from, to, body } = req.body;
-  // console.log(phoneNumber, message);
-  // console.log('====',  req.body);
-  // res.send('success');
-  // 使用 Twilio 客户端发送短信
-  client.messages
-    .create({
-      ...req.body
-      // body: message,
-      // from: '+447700159578', // 请替换为你自己的 Twilio 电话号码
-      // to: phoneNumber
+    // 准备要发送的短信内容和接收者手机号码
+    const body = message;
+    const toPhoneNumber = phoneNumber;
+
+    
+    fetch('/send-sms', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Basic ${btoa(`${accountSid}:${authToken}`)}`
+      },
+      body: JSON.stringify({
+        from: fromPhoneNumber,
+        to: toPhoneNumber,
+        body: body
+      })
     })
-    .then(message => {
-      console.log('消息已发送:', message.sid);
-      res.send('短信发送成功！');
+    .then(response => {
+      if (response.ok) {
+        alert('Send message successfully!');
+      } else {
+        throw new Error('Failed to send message');
+      }
     })
     .catch(error => {
-      console.error('发送消息错误:', error);
-      res.status(500).send('发送消息失败！');
+      console.error('Send Message Error:', error);
+      alert('Failed to send message');
     });
-});
+  };
+  
+  return (
+    <div style={{ padding: '20px' }}>
+      {/* 输入电话号码和消息内容的表单 */}
+      <input
+        type="tel"
+        value={phoneNumber}
+        onChange={handlePhoneChange}
+        placeholder="Enter phone number..."
+        style={{
+          width: '80%',
+          padding: '10px',
+          margin: '10px auto',
+          borderRadius: '5px',
+          border: '1px solid #ccc',
+          fontSize: '16px',
+          outline: 'none',
+        }}
+      />
+      <br />
+      <textarea
+        value={message}
+        onChange={handleMessageChange}
+        placeholder="Enter your message..."
+        style={{
+          width: '80%',
+          padding: '10px',
+          margin: '10px auto',
+          borderRadius: '5px',
+          border: '1px solid #ccc',
+          fontSize: '16px',
+          outline: 'none',
+          resize: 'vertical',
+        }}
+      />
+      <br />
+      <button onClick={sendSMS}
+        style={{
+          padding: '10px 20px',
+          margin: '10px',
+          borderRadius: '5px',
+          border: 'none',
+          fontSize: '16px',
+          backgroundColor: '#add8e6', // 浅蓝色
+          color: '#fff',
+          cursor: 'pointer',
+          outline: 'none',
+          transition: 'background-color 0.3s ease',
+        }}
+      >Send SMS</button>
+    </div>
+  );
+};
 
-// 启动服务器
-app.listen(port, () => {
-  console.log(`服务器正在运行于端口 ${port}`);
-});
+export default SendSMS;

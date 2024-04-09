@@ -186,7 +186,7 @@ function App(props) {
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
-      <button onClick={handleLoginClick}>Login</button> {/* 登录按钮 */}
+       {/*<button onClick={handleLoginClick}>Login</button> {/* 登录按钮 */}
       <Form addTask={addTask} geoFindMe={geoFindMe} />
       <div className="filters btn-group stack-exception">{filterList}</div>
       <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>

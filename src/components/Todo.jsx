@@ -247,12 +247,10 @@ const WebcamCapture = (props) => {
   };
 
   return (
-    <div className="webcam-capture-container">
+    <>
       {errorMessage && <p>{errorMessage}</p>}
-      <div className="image-container">
-      {!imgSrc && <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" className="webcam-video" />}
-      {imgSrc && <img src={imgSrc} className="webcam-preview" alt="Webcam Preview"/>}
-      </div>
+      {!imgSrc && <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" />}
+      {imgSrc && <img src={imgSrc} />}
       <div className="btn-group">
         {!imgSrc && (
           <button type="button" className="btn" onClick={() => capture(props.id)}>
@@ -262,7 +260,7 @@ const WebcamCapture = (props) => {
         {imgSrc && (
           <>
             <button type="button" className="btn" onClick={() => savePhoto(props.id, imgSrc)}>
-              Save 
+              Save Photo
             </button>
             <button type="button" className="btn todo-cancel" onClick={cancelPhoto}> {/* 修改取消按钮的点击事件 */}
               Cancel
@@ -270,10 +268,10 @@ const WebcamCapture = (props) => {
           </>
         )}
         <button type="button" className="btn" onClick={returnToHomePage}>
-          Back 
+          Return to Home
         </button>
       </div>
-      </div>
+    </>
   );
 };
 
