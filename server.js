@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 
 // 替换为你自己的 Twilio 凭证
 const accountSid = 'AC509e4d11d06a3d7a5ddb6a449134018f';
-const authToken = 'b3e75b5fe992cbd2f6771c1117b4842a';
+const authToken = '800ca65fbbdecfef14b5b84245f489ec';
 const client = twilio(accountSid, authToken);
 
 // 根路由
@@ -44,16 +44,16 @@ app.post('/send-sms', (req, res) => {
       // to: phoneNumber
     })
     .then(message => {
-      console.log('Message sent:', message.sid);
-      res.send('SMS sent successfully!');
+      console.log('消息已发送:', message.sid);
+      res.send('短信发送成功！');
     })
     .catch(error => {
-      console.error('Send message error:', error);
-      res.status(500).send('Failed to send message!');
+      console.error('发送消息错误:', error);
+      res.status(500).send('发送消息失败！');
     });
 });
 
 // 启动服务器
 app.listen(port, () => {
-  console.log(`The server is running on port ${port}`);
+  console.log(`服务器正在运行于端口 ${port}`);
 });
